@@ -26,7 +26,8 @@ function trackStore() {
                     update(tracks => {
                         return {
                             ...tracks,
-                            data: response.data
+                            data: response.data,
+                            query: query
                         }
 
                     });
