@@ -1,0 +1,95 @@
+.tile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .75rem;
+    height: 33vh;
+    overflow: hidden;
+    animation: slide-out .3s ease-out;
+    font-weight: $medium;
+
+    h4,
+    h5 {
+        z-index: 999
+    }
+
+    h4 {
+        font-weight: $bold;
+        text-align: center
+    }
+
+    h5 {
+        transition: inherit;
+        position: absolute;
+        bottom: .75rem;
+        left: .75rem
+    }
+
+    &:hover:after {
+        content: "";
+        position: absolute;
+        left: -64%;
+        top: 0;
+        width: 200%;
+        height: 200%;
+        background: rgba(20, 20, 20, .88);
+        animation: tile-out .3s ease-out;
+        transform: rotate(45deg) translateX(0);
+    }
+
+    &.imgTile {
+        background-size: cover;
+
+        h4 {
+            opacity: 0;
+            transition: inherit;
+        }
+
+        &:hover {
+            transform: scale(1.02);
+
+            h4 {
+                opacity: 1
+            }
+        }
+
+        &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent 60%, rgba(0, 0, 0, .6) 90%);
+        }
+    }
+}
+
+a.tile:not(.imgTile) {
+    &:hover {
+        i {
+            animation: emphasis .4s both ease-out;
+        }
+    }
+
+    .col:nth-child(odd) &:not(.reverse) {
+        background: darken($lGray, 2%);
+    }
+
+    .col:nth-child(even) &:not(.reverse) {
+        background: darken($lGray, 4%);
+    }
+
+    .col:nth-child(odd) &.reverse {
+        background: $color;
+    }
+
+    .col:nth-child(even) &.reverse {
+        background: darken($color, 10%);
+    }
+
+    .tile-icon {
+        font-size: 6rem;
+    }
+}

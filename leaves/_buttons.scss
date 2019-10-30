@@ -1,0 +1,38 @@
+.btn-default {
+    font-family: inherit;
+    font-weight: $medium;
+    text-transform: uppercase;
+    overflow: hidden;
+    outline: none;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button,
+.btn {
+    @extend .btn-default;
+    transition: all .3s ease;
+    border: 2px solid $gray;
+    background: transparent;
+    will-change: border-color, color;
+    border-radius: 2px;
+    color: $gray;
+    margin: 0;
+    padding: 8px 16px;
+    font-size: 14px;
+    letter-spacing: .5px;
+    line-height: 1em;
+    &:hover {
+        border-color: $color;
+        color: $color
+    }
+    &[disabled] {
+        color: rgba(0, 0, 0, .26);
+        background-color: rgba(0, 0, 0, .12);
+        border-color: rgba(0, 0, 0, .12);
+    }
+}

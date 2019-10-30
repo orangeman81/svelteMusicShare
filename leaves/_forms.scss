@@ -1,0 +1,91 @@
+label,
+input,
+select,
+textarea {
+    font-size: $h5-size;
+    font-weight: $regular;
+    color: lighten($off-black, 25%);
+}
+
+fieldset {
+    border: 0;
+    padding: 0;
+}
+
+.formGroup {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    animation: slide-out .3s ease-out
+}
+
+input,
+textarea,
+select {
+    background: inherit;
+    padding: .25rem 0;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 0;
+    font-family: inherit;
+    box-sizing: content-box;
+    width: 100%;
+    transition: all .3s ease-out;
+
+    &:focus,
+    &:active {
+        background: $bodyGray;
+    }
+
+    &:not(.noLine) {
+        border-bottom: solid .15rem lighten($gray, 15%);
+
+        &:focus,
+        &:active {
+            border-bottom: solid .15rem $color;
+        }
+
+        &:invalid {
+            border-bottom: solid .15rem #F44336;
+        }
+    }
+
+}
+
+textarea {
+    resize: none;
+}
+
+// file input
+.file-field {
+    position: relative;
+
+    input[type=file] {
+
+        // Needed to override webkit button
+        &::-webkit-file-upload-button {
+            display: none;
+        }
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        filter: alpha(opacity=0);
+    }
+}
+
+// chrome input fix
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px $bodyGray inset !important;
+}

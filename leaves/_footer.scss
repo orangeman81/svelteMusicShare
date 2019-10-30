@@ -1,0 +1,13 @@
+#mainFooter {
+    max-height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 16px 24px;
+    color: $off-white;
+    background-color: $footerColor;
+    margin-top: 56px;
+    border-top: solid 1px $lineGray
+}

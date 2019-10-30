@@ -1,0 +1,43 @@
+.dropdown {
+    position: absolute;
+    top: -28px;
+    right: 0;
+    z-index: 1000;
+    max-height: 300px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    transition: all .3s ease;
+    border: 2px solid $gray;
+    background-color: $bodyGray;
+    opacity: 0;
+    transform-origin: right top 0px;
+    transform: scale(0);
+    ul {
+        padding-top: 28px;
+        li {
+            cursor: pointer;
+            padding: 0 16px;
+            line-height: 48px;
+            transition: inherit;
+            transform: translateY(-30%);
+            &:hover {
+                background-color: $lGray;
+            }
+            a {
+                display: flex;
+                align-items: center;
+                i {
+                    margin-right: .5rem;
+                }
+            }
+        }
+    }
+    &.active {
+        opacity: 1;
+        transform: scale(1);
+        li {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+    }
+}

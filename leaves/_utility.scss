@@ -1,0 +1,62 @@
+// transitions
+.ease {
+    transition: $ease;
+}
+
+.ease-in {
+    transition: $ease-in;
+}
+
+.ease-out {
+    transition: $ease-out;
+}
+
+.imgRes {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.imgRound {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px
+}
+
+.d-flex {
+    display: flex;
+}
+
+.f-center {
+    align-items: center
+}
+
+.f-justify-c {
+    justify-content: center
+}
+
+.f-justify-b {
+    justify-content: space-between
+}
+
+.centeredLayout {
+    height: calc(100vh - 172px);
+    width: 100vw;
+    @extend .d-flex;
+    @extend .f-center;
+    @extend .f-justify-c;
+}
+
+.hide-laptop {
+    @media #{$laptop-up} {
+        display: none;
+    }
+}
+
+.hide-tablet {
+    @media #{$laptop-down} {
+        display: none;
+    }
+}
+
+@include make-spaces();

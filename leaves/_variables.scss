@@ -1,0 +1,55 @@
+// variables
+// colors
+$color: #00bcd4;
+$gray: #9e9e9e;
+$bodyGray: lighten($gray, 36%);
+$lineGray: rgba(0, 0, 0, .12);
+$lGray: lighten($gray, 34%);
+$dGray: darken($gray, 15%);
+$xdGray: darken($gray, 30%);
+$white: #ffffff;
+$off-white: rgba(255, 255, 255, .8);
+$off-black: rgba(0, 0, 0, .8);
+// typography
+$body-font: 'Open Sans', sans-serif;
+$headers-font: inherit;
+$h1-size: 3.2rem;
+$h2-size: 2.6rem;
+$h3-size: 2rem;
+$h4-size: 1.6rem;
+$h5-size: 1.2rem;
+$h6-size: .8rem;
+// font weight
+$light: 300;
+$regular: 400;
+$medium: 600;
+$bold: 700;
+// grid breakpoints
+$columns: 12;
+$desktop: 1440px;
+$laptop: 1366px;
+$tablet: 1024px;
+$mobile: 720px;
+$desktop-up: "only screen and (min-width : #{$desktop + 1})";
+$laptop-up: "only screen and (min-width : #{$laptop + 1})";
+$tablet-up: "only screen and (min-width : #{$tablet + 1})";
+$desktop-down: "only screen and (max-width : #{$desktop})";
+$laptop-down: "only screen and (max-width : #{$laptop})";
+$tablet-down: "only screen and (max-width : #{$tablet})";
+// box model
+$border: solid 1px rgba(0, 0, 0, .1);
+$radius: 2px;
+// navbar
+$navbarColor: $xdGray;
+// footer
+$footerColor: $navbarColor;
+// card
+$cardContentPadding: 24px;
+// utility
+$ease: all .3s ease;
+$ease-in: all .3s ease-in;
+$ease-out: all .3s ease-out;
+$elevation: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+0 3px 1px -2px rgba(0, 0, 0, 0.12),
+0 1px 5px 0 rgba(0, 0, 0, 0.2);
+$textElevation: 0 2px 2px rgba(0, 0, 0, 0.56);

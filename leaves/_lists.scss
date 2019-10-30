@@ -1,0 +1,29 @@
+ul.list {
+    li {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px;
+
+        &>* {
+            width: 100%
+        }
+
+        &:not(:last-child) {
+            border-bottom: solid 1px $lineGray;
+        }
+
+        @media screen and (max-width: $mobile) {
+            flex-direction: column;
+
+            *:last-child {
+                margin-top: 24px;
+            }
+        }
+    }
+
+    li:nth-child(even) {
+        background: $lGray;
+    }
+}

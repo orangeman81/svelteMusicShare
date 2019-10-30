@@ -1,0 +1,66 @@
+nav {
+    height: 60px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px 24px;
+    background-color: $navbarColor;
+    margin-bottom: 56px;
+    border-bottom: solid 1px $lineGray;
+
+    @extend .d-flex;
+    @extend .f-center;
+    @extend .f-justify-b;
+
+    &>* {
+        height: inherit;
+        @extend .d-flex;
+        @extend .f-center;
+    }
+
+    &>ul {
+        i {
+            line-height: inherit;
+        }
+
+        li {
+            position: relative;
+        }
+
+        li:not(:last-child) {
+            margin-right: 16px
+        }
+    }
+
+    .navSearch {
+        position: relative;
+        @extend .d-flex;
+        @extend .f-center;
+
+        label {
+            position: absolute;
+            left: -32px;
+
+            i {
+                color: $off-white
+            }
+        }
+
+        input {
+            box-sizing: border-box;
+            border-radius: 4px;
+            padding: 8px;
+            transition: all .6s ease;
+            max-width: 4vw;
+
+            &:hover,
+            &:focus,
+            &:active {
+                max-width: 48vw;
+
+                @media screen and (max-width: $mobile) {
+                    max-width: 32vw
+                }
+            }
+        }
+    }
+}

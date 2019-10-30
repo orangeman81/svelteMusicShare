@@ -1,0 +1,150 @@
+html {
+    font-weight: $regular;
+    font-family: $body-font;
+    line-height: 1.4;
+    color: $off-black;
+
+    @media screen and (min-width: 0) {
+        font-size: 14px;
+    }
+
+    @media screen and (min-width: $tablet) {
+        font-size: 15px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        font-size: 16px;
+    }
+}
+
+// headings
+h1 {
+    font-size: $h1-size;
+    font-weight: $light
+}
+
+h2 {
+    font-size: $h2-size;
+}
+
+h3 {
+    font-size: $h3-size;
+}
+
+h4,
+.title {
+    font-size: $h4-size;
+}
+
+h5 {
+    font-size: $h5-size;
+}
+
+h6 {
+    font-size: $h6-size;
+}
+
+small {
+    font-size: .8em;
+}
+
+strong {
+    font-weight: $bold;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title {
+    font-family: $headers-font;
+    line-height: 1.2;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title {
+    margin: 0;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-weight: inherit;
+}
+
+p {
+    margin: .25rem 0;
+    line-height: inherit
+}
+
+time {
+    font-size: 1rem;
+    font-weight: $medium;
+    color: lighten($off-black, 40%);
+}
+
+.white {
+    color: $off-white
+}
+
+// links
+a {
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: $medium;
+    @extend .ease;
+
+    &:not(.btn):not(.white) {
+        color: $gray;
+        &:hover,
+        &.active {
+            color: $color;
+        }
+    }
+
+}
+
+// badge
+.badge {
+    position: absolute;
+    left: -12px;
+    top: -4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.4em;
+    height: 1.4em;
+    border-radius: 50%;
+    background: $gray;
+    border: solid 2px $xdGray;
+    color: $xdGray;
+    font-size: .8em;
+    animation: slide-in .4s both ease-in
+}
+
+// hr
+hr {
+    width: 100%;
+    border: 1px solid $lineGray
+}
+
+// error text
+.error {
+    font-size: $h5-size;
+    color: #F44336;
+    text-align: center;
+    letter-spacing: 1px;
+    padding: 8px 0;
+    font-weight: $medium;
+    animation: slide-out .3s ease-out
+}
