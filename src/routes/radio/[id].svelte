@@ -23,6 +23,7 @@
 <script>
   import { radio } from "../../stores/radio.js";
   import { onMount } from "svelte";
+  import { onDestroy } from "svelte";
 
   export let tracks;
   export let id;
@@ -31,7 +32,12 @@
     const unsubscribe = radio.subscribe(
       radio => (details = radio.find(e => e.id === +id))
     );
-    console.log(id, details);
+  });
+
+  onDestroy(() => {
+    if (unsubscribe) {
+      unsubscribe();
+    }
   });
 </script>
 
