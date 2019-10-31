@@ -1,48 +1,38 @@
 <script context="module">
   export async function preload(page) {
     const id = page.params.id;
-    let details;
-    return fetch(`https://deezerdevs-deezer.p.rapidapi.com/radio/${id}`, {
-      method: "GET",
-      headers: {
-        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-        "x-rapidapi-key": "6d76812301mshae66073ae2beca5p1e12adjsnc9f2b3725389"
+    return fetch(
+      `https://deezerdevs-deezer.p.rapidapi.com/radio/${id}/tracks`,
+      {
+        method: "GET",
+        headers: {
+          "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+          "x-rapidapi-key": "6d76812301mshae66073ae2beca5p1e12adjsnc9f2b3725389"
+        }
       }
-    })
+    )
       .then(response => {
         return response.json();
       })
-      .then(res => {
-        details = res;
-      })
-      .then(() => {
-        return fetch(
-          `https://deezerdevs-deezer.p.rapidapi.com/radio/${id}/tracks`,
-          {
-            method: "GET",
-            headers: {
-              "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-              "x-rapidapi-key":
-                "6d76812301mshae66073ae2beca5p1e12adjsnc9f2b3725389"
-            }
-          }
-        )
-          .then(response => {
-            return response.json();
-          })
-          .then(res => {
-            details.tracks = res.data;
-            return { details };
-          });
-      })
-      .catch(err => {
-        console.log(err);
+      .then(tracks => {
+        return { tracks, id };
       });
   }
 </script>
 
 <script>
-  export let details;
+  import { radio } from "../../stores/radio.js";
+  import { onMount } from "svelte";
+
+  export let tracks;
+  export let id;
+  let details;
+  onMount(async () => {
+    const unsubscribe = radio.subscribe(
+      radio => (details = radio.find(e => e.id === +id))
+    );
+    console.log(id, details);
+  });
 </script>
 
 <template>
@@ -65,7 +55,7 @@
     </header>
     <hr />
     <ul class="list">
-      {#each details.tracks as item}
+      {#each tracks.data as item}
         <li>
           <span class="d-flex f-center">
             <img

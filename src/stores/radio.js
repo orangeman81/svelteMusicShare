@@ -1,10 +1,7 @@
 import { writable } from 'svelte/store';
 
 function radioStore() {
-    const { subscribe, set, update } = writable({
-        data: [],
-        details: {}
-    });
+    const { subscribe, set, update } = writable([]);
 
     return {
         subscribe,
@@ -22,13 +19,7 @@ function radioStore() {
                     return response.json();
                 })
                 .then(response => {
-                    update(radio => {
-                        return {
-                            ...radio,
-                            data: response.data
-                        }
-
-                    });
+                    set(response.data);
                 })
                 .catch(err => {
                     console.log(err);

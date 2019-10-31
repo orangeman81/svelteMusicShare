@@ -4,7 +4,7 @@
   import { radio } from "../../stores/radio.js";
 
   let data = [];
-  const unsubscribe = radio.subscribe(store => (data = store.data));
+  const unsubscribe = radio.subscribe(store => (data = store));
 
   onMount(async () => {
     radio.load();
