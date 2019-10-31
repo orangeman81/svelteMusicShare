@@ -4,10 +4,11 @@
   import { tracks } from "../stores/tracks.js";
 
   let data = [];
-  const unsubscribe = tracks.subscribe(store => (data = store.data));
+  let query = "";
+  const unsubscribe = tracks.subscribe(store => (data = store.data, query = store.query));
 
   onMount(async () => {
-    tracks.load('jimi hendrix');
+    tracks.load(query);
   });
 
   onDestroy(() => {

@@ -1,10 +1,8 @@
-import { goto } from "@sapper/app";
 import { writable } from 'svelte/store';
 
-function trackStore() {
+function radioStore() {
     const { subscribe, set, update } = writable({
         data: [],
-        query: "jimi hendrix",
         details: {}
     });
 
@@ -12,8 +10,8 @@ function trackStore() {
         subscribe,
         set,
         update,
-        load: (query) => {
-            fetch(`https://deezerdevs-deezer.p.rapidapi.com/search?q=${query}`, {
+        load: () => {
+            fetch(`https://deezerdevs-deezer.p.rapidapi.com/radio/lists`, {
                 method: "GET",
                 headers: {
                     "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
@@ -24,16 +22,14 @@ function trackStore() {
                     return response.json();
                 })
                 .then(response => {
-                    update(tracks => {
+                    update(radio => {
                         return {
-                            ...tracks,
-                            data: response.data,
-                            query: query
+                            ...radio,
+                            data: response.data
                         }
 
                     });
                 })
-                .then(() => goto("./"))
                 .catch(err => {
                     console.log(err);
                 });
@@ -41,4 +37,4 @@ function trackStore() {
     };
 }
 
-export const tracks = trackStore();
+export const radio = radioStore();

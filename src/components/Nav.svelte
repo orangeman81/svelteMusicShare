@@ -61,5 +61,8 @@
     <li>
       <a class={segment === undefined ? 'active' : ''} href=".">home</a>
     </li>
+    <li>
+      <a class={segment === 'radio' ? 'active' : ''} href="radio">radio</a>
+    </li>
   </ul>
 </nav>

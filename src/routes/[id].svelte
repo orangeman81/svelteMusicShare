@@ -1,5 +1,5 @@
 <script context="module">
-  export function preload(page) {
+  export async function preload(page) {
     const id = page.params.id;
     return fetch(`https://deezerdevs-deezer.p.rapidapi.com/album/${id}`, {
       method: "GET",
