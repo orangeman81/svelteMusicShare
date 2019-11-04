@@ -22,17 +22,14 @@
 
 <script>
   import { radio } from "../../stores/radio.js";
-  import { onMount } from "svelte";
   import { onDestroy } from "svelte";
 
   export let tracks;
   export let id;
   let details;
-  onMount(async () => {
-    const unsubscribe = radio.subscribe(
-      radio => (details = radio.find(e => e.id === +id))
-    );
-  });
+  const unsubscribe = radio.subscribe(
+    radio => (details = radio.find(e => e.id === +id))
+  );
 
   onDestroy(() => {
     if (unsubscribe) {
