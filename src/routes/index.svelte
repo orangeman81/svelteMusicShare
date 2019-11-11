@@ -1,15 +1,43 @@
-<script>
-  import { onMount } from "svelte";
-  import { onDestroy } from "svelte";
+<script context="module">
   import { tracks } from "../stores/tracks.js";
+  export async function preload(page) {
+    const query = page.query.query ? page.query.query : "jimi hendrix";
+    return this.fetch(
+      `https://deezerdevs-deezer.p.rapidapi.com/search?q=${query}}`,
+      {
+        method: "GET",
+        headers: {
+          "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+          "x-rapidapi-key": "6d76812301mshae66073ae2beca5p1e12adjsnc9f2b3725389"
+        }
+      }
+    )
+      .then(response => {
+        return response.json();
+      })
+      .then(response => {
+        tracks.update(tracks => {
+          return {
+            ...tracks,
+            data: response.data,
+            query: "jimi hendrix"
+          };
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+</script>
+
+<script>
+  import { onDestroy } from "svelte";
 
   let data = [];
   let query = "";
-  const unsubscribe = tracks.subscribe(store => (data = store.data, query = store.query));
-
-  onMount(async () => {
-    tracks.load(query);
-  });
+  const unsubscribe = tracks.subscribe(
+    store => ((data = store.data), (query = store.query))
+  );
 
   onDestroy(() => {
     if (unsubscribe) {

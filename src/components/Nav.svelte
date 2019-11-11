@@ -2,6 +2,7 @@
   import { tracks } from "../stores/tracks.js";
   import { BehaviorSubject, Subscription } from "rxjs";
   import { distinctUntilChanged, debounceTime, filter } from "rxjs/operators";
+  import { goto } from "@sapper/app";
   import { onMount } from "svelte";
   import { onDestroy } from "svelte";
   export let segment;
@@ -25,7 +26,7 @@
         distinctUntilChanged(),
         debounceTime(600)
       )
-      .subscribe(query => tracks.load(query.trim()));
+      .subscribe(query => goto(`./?query=${query.trim()}`));
   });
 
   onDestroy(() => {

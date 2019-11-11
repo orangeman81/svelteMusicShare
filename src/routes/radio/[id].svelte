@@ -1,7 +1,10 @@
 <script context="module">
+  import { radio } from "../../stores/radio.js";
+  import { get } from "svelte/store";
+
   export async function preload(page) {
     const id = page.params.id;
-    return fetch(
+    return this.fetch(
       `https://deezerdevs-deezer.p.rapidapi.com/radio/${id}/tracks`,
       {
         method: "GET",
@@ -15,27 +18,20 @@
         return response.json();
       })
       .then(tracks => {
-        return { tracks, id };
+        let details = get(radio);
+        details = details.find(e => e.id === +id);
+        console.log(details);
+        return { tracks, id, details };
       });
   }
 </script>
 
 <script>
-  import { radio } from "../../stores/radio.js";
   import { onDestroy } from "svelte";
 
   export let tracks;
   export let id;
-  let details;
-  const unsubscribe = radio.subscribe(
-    radio => (details = radio.find(e => e.id === +id))
-  );
-
-  onDestroy(() => {
-    if (unsubscribe) {
-      unsubscribe();
-    }
-  });
+  export let details;
 </script>
 
 <template>

@@ -1,7 +1,7 @@
 <script context="module">
   export async function preload(page) {
     const id = page.params.id;
-    return fetch(`https://deezerdevs-deezer.p.rapidapi.com/album/${id}`, {
+    return this.fetch(`https://deezerdevs-deezer.p.rapidapi.com/album/${id}`, {
       method: "GET",
       headers: {
         "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",

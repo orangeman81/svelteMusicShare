@@ -33,7 +33,7 @@ function trackStore() {
 
                     });
                 })
-                .then(() => goto("./"))
+                .then(() => goto(`./?query=${query}`))
                 .catch(err => {
                     console.log(err);
                 });
