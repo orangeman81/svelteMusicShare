@@ -23,8 +23,8 @@
     sub = query$
       .pipe(
         filter(query => query != ""),
-        distinctUntilChanged(),
-        debounceTime(600)
+        debounceTime(600),
+        distinctUntilChanged()
       )
       .subscribe(query => goto(`./?query=${query.trim()}`));
   });
